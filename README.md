@@ -12,6 +12,16 @@ Also the documentation for JDBI is thin on the ground and hard to dig through.
 
 This is very early code and has no unit tests right now. I would not recommend this for production code unless you really know what you are doing
 
+# Building
+
+    gradle clean jar
+    
+Optionally you can publish this to your local maven repo
+
+    gradle publishToMavenLocal
+    
+I currently have no idea how to get the JAR up to maven central. 
+
 # Usage
 
 In your application's ````run```` method (remember to change ````SQLDialect```` to your DBMS of choice if not using Postgres)
