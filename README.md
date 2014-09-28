@@ -30,7 +30,7 @@ In your application's ````run```` method (remember to change ````SQLDialect```` 
 	public void run(ExampleConfiguration config,
 					Environment environment) throws ClassNotFoundException {
         final JooqDSLContextFactory dslContextFactory = new JooqDSLContextFactory();
-        this.dslContext = dslContextFactory.build(environment, configuration.getDataSourceFactory(), SQLDialect.POSTGRES);
+        this.dslContext = dslContextFactory.build(environment, config.getDataSourceFactory(), SQLDialect.POSTGRES);
 		final UserDAO dao =  new UserDAO(dslContext);
 		// other application code...
 	}
