@@ -40,5 +40,5 @@ A DAO can be something like this
 	}
 # Outstanding tasks
 
-* See [Issues]()
+* See [Issues](https://github.com/djhworld/dropwizard-jooq/issues)
 
