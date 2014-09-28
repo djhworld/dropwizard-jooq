@@ -12,6 +12,16 @@ Also the documentation for JDBI is thin on the ground and hard to dig through.
 
 This is very early code and has no unit tests right now. I would not recommend this for production code unless you really know what you are doing
 
+# Building
+
+    gradle clean jar
+    
+Optionally you can publish this to your local maven repo
+
+    gradle publishToMavenLocal
+    
+I currently have no idea how to get the JAR up to maven central. 
+
 # Usage
 
 In your application's ````run```` method (remember to change ````SQLDialect```` to your DBMS of choice if not using Postgres)
@@ -20,7 +30,7 @@ In your application's ````run```` method (remember to change ````SQLDialect```` 
 	public void run(ExampleConfiguration config,
 					Environment environment) throws ClassNotFoundException {
         final JooqDSLContextFactory dslContextFactory = new JooqDSLContextFactory();
-        this.dslContext = dslContextFactory.build(environment, configuration.getDataSourceFactory(), SQLDialect.POSTGRES);
+        this.dslContext = dslContextFactory.build(environment, config.getDataSourceFactory(), SQLDialect.POSTGRES);
 		final UserDAO dao =  new UserDAO(dslContext);
 		// other application code...
 	}
@@ -35,7 +45,7 @@ A DAO can be something like this
 	  }
 
 	  public String findNameById(int id) {
-		return this.dslContext.select(field("id")).from("users").fetch();
+		return this.dslContext.select(field("name")).from("users").where(field("id").equal(id)).fetch();
 	  }
 	}
 # Outstanding tasks
