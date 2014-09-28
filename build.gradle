@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+
+
+ext {
+	IMPLEMENTATION_GROUP = "io.github.djhworld"
+	IMPLEMENTATION_NAME = "dropwizard-jooq"
+	IMPLEMENTATION_VERSION = "0.0.1"
+
+	DROPWIZARD_VERSION = "0.7.1"
+	JOOQ_VERSION = "3.4.2"
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+    compile "org.jooq:jooq:$JOOQ_VERSION"
+	compile "io.dropwizard:dropwizard-db:$DROPWIZARD_VERSION"
+    testCompile "junit:junit:4.11"
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': IMPLEMENTATION_NAME,
+                   'Implementation-Version': IMPLEMENTATION_VERSION
+    }
+}
+
+group = IMPLEMENTATION_GROUP
+version = IMPLEMENTATION_VERSION
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
