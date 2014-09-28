@@ -4,3 +4,6 @@ gradle.properties
 gradle/
 gradlew
 gradlew.bat
+*.ipr
+*.iws
+*.iml
