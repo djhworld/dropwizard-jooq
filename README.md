@@ -45,7 +45,7 @@ A DAO can be something like this
 	  }
 
 	  public String findNameById(int id) {
-		return this.dslContext.select(field("id")).from("users").fetch();
+		return this.dslContext.select(field("name")).from("users").where(field("id").equal(id)).fetch();
 	  }
 	}
 # Outstanding tasks
